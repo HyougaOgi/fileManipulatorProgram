@@ -7,7 +7,7 @@ class FileManipulator:
             self.tryInput()
         self.action = self.arg[1]
         self.inputPath = self.arg[2]
-        self.outputPath = None
+        self.outputPath = ""
 
     def actionControl(self):
         if self.action == "reverse":
