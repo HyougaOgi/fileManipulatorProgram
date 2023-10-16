@@ -3,8 +3,6 @@ import sys
 class FileManipulator:
     def __init__(self):
         self.arg = sys.argv
-        if len(self.arg) < 1:
-            self.tryInput()
         self.action = self.arg[1]
         self.inputPath = self.arg[2]
         self.outputPath = ""
@@ -36,12 +34,9 @@ class FileManipulator:
             for needle in needles:
                 content = content.replace(needle, newString)
             self.write(self.inputPath,content)
-
-
-
         else:
-            self.tryInput()
-
+            print("コマンドが間違いています")
+            sys.exit()
 
     def read(self, path):
         with open(path) as f:
@@ -51,15 +46,6 @@ class FileManipulator:
     def write(self, path, content):
         with open(path, "w") as f:
             f.write(content)
-
-    def tryInput(self):
-        print("正しく入力してください")
-        self.arg = input()
-        self.action = self.arg[1]
-        list = ["reverse", "copy", "duplicate-contents", "replace-string"]
-        if self.action in list:
-            self.actionControl()
-        self.actionControl()
 
 
 
